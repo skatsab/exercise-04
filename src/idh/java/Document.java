@@ -35,6 +35,20 @@ public class Document implements Iterable<String> {
 		this.documentText = documentText;
 	}
 	
+	// Berechnet die Type-Token-Relation (TTR) des Dokuments
+	public double ttr() {
+		Set<String> types = new HashSet<>();
+		int tokenCount = 0;
+		for (String token : this) {
+			types.add(token);
+			tokenCount++;
+		}
+		if (tokenCount == 0) {
+			return 0.0;
+		}
+		return (double) types.size() / tokenCount;
+	}
+	
 	public static final void main(String[] args) throws IOException {
 		Document d = Document.readFromFile(new File("data/dracula.txt"));
 		
