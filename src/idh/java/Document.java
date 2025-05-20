@@ -38,12 +38,23 @@ public class Document implements Iterable<String> {
 	public static final void main(String[] args) throws IOException {
 		Document d = Document.readFromFile(new File("data/dracula.txt"));
 		
-		int i = 0;
+		
+		Set<String> types = new HashSet<String>();
+		List<String> tokens = new ArrayList<String>();
+		
 		for (String token : d) {
-			System.out.println(i++ + ": " + token + " ");
-			if (i > 100)
-				break;
+			tokens.add(token);
+			types.add(token);
 		}
+		
+		
+		System.out.println(tokens.size());
+		System.out.println(types.size());
+		
+		double ttr = types.size() / tokens.size();
+		//TODO: Das ist doch irgendwie falsch hier?
+		System.out.println(ttr);
+		
 		
 	}
 
